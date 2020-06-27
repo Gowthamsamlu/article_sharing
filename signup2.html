@@ -1,0 +1,33 @@
+<html>
+  <body onload="loadyoc()">
+    <form action="submit_signup.php" method="post">
+      <input type="text" maxlength="15" name="fname" placeholder="First Name" autofocus required />
+      <input type="text" maxlength="15" name="lname" placeholder="Last Name" required/><BR>
+      <input type="text" maxlength="10" name="rollno" placeholder="Roll Number" required />
+      <input type="text" maxlength="40" name="email" placeholder="Email" required/><BR>
+      <label>Date Of Birth</label>
+      <input type="date" name="dob"  required />
+      <input type="radio" name="gender" value="M" checked>Male
+      <input type="radio" name="gender" value="F">Female
+      <select id="yoc_select" name="yoc"></select>
+      <input type="password" maxlength="30" name="pass1" placeholder="Password" required/><BR>
+      <input type="submit" value="Submit">
+      <script>
+        function loadyoc(){
+          var m = document.getElementById("yoc_select");
+          var date = new Date();
+          if(date.getMonth()<6)
+            var startyear = date.getFullYear();
+          else
+            var startyear = date.getFullYear()+1;
+          for (var i=1; i<=3;i++){
+            var obj = document.createElement("option");
+            obj.text = startyear+(i-1);
+            obj.value = startyear+(i-1);
+            m.add(obj);   
+          }
+        }
+      </script>
+    </form>
+  </body>
+</html>
